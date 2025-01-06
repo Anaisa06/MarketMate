@@ -11,6 +11,7 @@ export const getItems = async (): Promise<IItem[]>  => {
         return [];
     }
 }
+
 export const saveItems = async (newItem: IItem) => {
     try {
         let items = await getItems();
@@ -43,7 +44,6 @@ export const updateItem = async (updateItem: IItem) => {
     return {
         statusCode: 201
     }
-
 }
 
 
