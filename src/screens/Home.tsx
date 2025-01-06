@@ -10,27 +10,7 @@ import AddItemForm from '../components/organisms/forms/AddItemForm'
 import { getItems } from '../services/itemsServices'
 import { useNavigation } from '@react-navigation/native'
 import { HomeNavigationProp, HomeRouteParams } from '../navigation/navigationTypes'
-
-interface ListData {
-    title: string;
-    data: [{}]
-}
-
-function GroupItems(list: IItem[]) {
-    let groupedObject: any = {};
-    list.forEach(item => {
-
-        if (!groupedObject[item.category]) {
-            groupedObject[item.category] = { title: item.category, data: [] }
-        }
-
-        groupedObject[item.category].data.push(item)
-    })
-
-    const itemsForList: any = Object.values(groupedObject)
-
-    return itemsForList;
-}
+import { groupItems } from '../utils/groupItems'
 
 interface IProps {
     route: HomeRouteParams
@@ -41,7 +21,10 @@ const Home = ({ route }: IProps) => {
     const [items, setItems] = useState<IItem[]>([])
 
     const navigation = useNavigation<HomeNavigationProp>();
-    const reRender = () => navigation.setParams({reRender: !route.params.reRender})
+     
+    const reRender = () => { 
+        navigation.setParams({reRender: !route.params.reRender}) 
+    } 
 
     useEffect(() => {
         const fetchItems = async() => {
@@ -53,7 +36,7 @@ const Home = ({ route }: IProps) => {
 
     const [openModal, setOpenModal] = useState(false);
 
-    const itemsForList = GroupItems(items)
+    const itemsForList = groupItems(items)
 
     return (
         <SafeAreaView style={{flex: 1}} >

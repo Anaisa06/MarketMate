@@ -12,14 +12,14 @@ const TabNavigator = () => {
     return (
         <Tab.Navigator screenOptions={{
             tabBarShowLabel: false,
-            headerTitle: () => <Logo/>,
-            headerStyle: {height: 110, backgroundColor: '#ebebeb'},
+            headerTitle: () => <Logo />,
+            headerStyle: { height: 110, backgroundColor: '#ebebeb' },
             tabBarStyle: { backgroundColor: '#ebebeb', height: 50, justifyContent: 'center', alignItems: 'center' },
             tabBarInactiveTintColor: '#ff3131',
-            tabBarActiveTintColor:  '#ebebeb',
-            tabBarActiveBackgroundColor: '#ff3131'            
+            tabBarActiveTintColor: '#ebebeb',
+            tabBarActiveBackgroundColor: '#ff3131'
         }}>
-            <Tab.Screen name="Home" component={Home} initialParams={{reRender: false}} options={{
+            <Tab.Screen name="Home" component={Home} initialParams={{ reRender: false }} options={{
 
                 tabBarIcon: (props: { focused: boolean, color: string, size: number }) =>
                     <Icon
@@ -27,7 +27,7 @@ const TabNavigator = () => {
                         size={35}
                         color={props.color} />
             }} />
-            <Tab.Screen name="Statistics" component={Statistics} options={{
+            <Tab.Screen name="Statistics" component={Statistics} initialParams={{ reRender: false }} options={{
                 tabBarIcon: (props: { focused: boolean, color: string, size: number }) =>
                     <Icon
                         source={'chart-areaspline'}
