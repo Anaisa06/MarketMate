@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react'
 import { ScrollView } from 'react-native';
-import { Icon, IconButton, Modal, Portal } from 'react-native-paper';
+import { IconButton, Modal, Portal } from 'react-native-paper';
 
 interface IProps {
     openModal: boolean;

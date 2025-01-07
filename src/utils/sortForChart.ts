@@ -3,9 +3,7 @@ import { itemStatus } from "../interfaces/itemStatus";
 import { groupItems } from "./groupItems";
 
 function generateRandomColor(): string {
-    // Generating a random number between 0 and 0xFFFFFF
     const randomColor = Math.floor(Math.random() * 0xffffff);
-    // Converting the number to a hexadecimal string and padding with zeros
     return `#${randomColor.toString(16).padStart(6, "0")}`;
   }
 

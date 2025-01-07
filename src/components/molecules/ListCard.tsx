@@ -1,14 +1,11 @@
 import React, { useState } from 'react'
-import { Pressable, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import { Checkbox, Icon, IconButton } from 'react-native-paper'
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { Checkbox, IconButton } from 'react-native-paper'
 import { itemStatus } from '../../interfaces/itemStatus';
 import { IItem } from '../../interfaces/item';
 import { deleteItem, checkItem } from '../../services/itemsServices';
 import CustomModal from './CustomModal';
-import AddItemBtn from '../atoms/AddItemBtn';
 import AddItemForm from '../organisms/forms/AddItemForm';
-import { set } from 'react-hook-form';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 
 interface IProps {
     item: IItem;
