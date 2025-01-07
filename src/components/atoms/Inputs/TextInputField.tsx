@@ -4,20 +4,21 @@ import { KeyboardTypeOptions, StyleSheet, Text, TextInput, View } from 'react-na
 
 interface Props {
     label: string;
+    value?: any;
     field: ControllerRenderProps<any>;
     error?: FieldError;
     type?: KeyboardTypeOptions | undefined;
     isPassword?: boolean;
 }
 
-const TextInputField = ({ label, field, error, type = 'default', isPassword = false }: Props) => {
+const TextInputField = ({ value, label, field, error, type = 'default', isPassword = false }: Props) => {
 
     return (
         <View style={{ gap: 5 }}>
             <TextInput
                 style={[styles.input, error ? styles.inputError : null]}
                 onChangeText={field.onChange}
-                value={field.value}
+                value={value ? value : field.value}
                 placeholder={label}
                 keyboardType={type}
                 placeholderTextColor='#646464'

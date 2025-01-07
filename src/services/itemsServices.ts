@@ -29,7 +29,7 @@ export const saveItems = async (newItem: IItem) => {
     }
 }
 
-export const updateItem = async (updateItem: IItem) => {
+export const checkItem = async (updateItem: IItem) => {
     let items = await getItems();
     const filteredItems = items.filter(item => item.id != updateItem.id)
     const toSave: IItem[] = [  
@@ -43,6 +43,30 @@ export const updateItem = async (updateItem: IItem) => {
     await AsyncStorage.setItem('Items', JSON.stringify(toSave))
     return {
         statusCode: 201
+    }
+}
+
+export const updateItem = async (itemToUpdate: IItem) => {
+    const items = await getItems();
+    const filteredItems = items.filter(item => item.id != itemToUpdate.id);
+    const toSave: IItem[] = [
+        ...filteredItems,
+        itemToUpdate
+    ];
+    await AsyncStorage.removeItem('Items');
+    await AsyncStorage.setItem('Items', JSON.stringify(toSave))
+}
+
+export const deleteItem = async (deleteItem: IItem) => {
+    try {
+        const items = await getItems();
+        const filteredItems = items.filter(item => item.id != deleteItem.id);
+
+        await AsyncStorage.removeItem('Items');
+        await AsyncStorage.setItem('Items', JSON.stringify(filteredItems));
+
+    } catch (error) {
+        console.error('Error deleting items', error);
     }
 }
 

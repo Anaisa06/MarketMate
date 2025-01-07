@@ -5,4 +5,5 @@ export interface IItem {
     name: string
     category: string
     status: itemStatus
+    quantity: string;
   }
